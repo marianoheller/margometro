@@ -1,0 +1,19 @@
+{
+  "name": "rageboard-backend",
+  "version": "1.0.0",
+  "description": "Rage Board - NodeJS backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianoheller/rageboard.git"
+  },
+  "author": "Mariano Heller & Ivan Franco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marianoheller/rageboard/issues"
+  },
+  "homepage": "https://github.com/marianoheller/rageboard#readme"
+}
