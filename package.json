@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --exit"
+    "test": "mocha --reporter mocha-junit-reporter --exit",
+    "coverage": "nyc --reporter=clover --reporter=html npm run test"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -16,6 +17,8 @@
     "chai": "^4.2.0",
     "husky": "^2.3.0",
     "mocha": "^6.1.4",
+    "mocha-junit-reporter": "^1.22.0",
+    "nyc": "^14.1.1",
     "prettier": "1.17.1",
     "pretty-quick": "^1.11.0",
     "supertest": "^4.0.2"
