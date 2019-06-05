@@ -1,6 +1,6 @@
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import themeAnimated from "@amcharts/amcharts4/themes/animated";
+import themeAnimated from "@amcharts/amcharts4/themes/material";
 
 am4core.useTheme(themeAnimated);
 
@@ -8,7 +8,7 @@ export const capValue = (min, max) => value => {
   if (value < min) return min;
   if (value > max) return max;
   return value;
-}
+};
 
 export const createChart = domName => {
   // create chart

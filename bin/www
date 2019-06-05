@@ -30,6 +30,12 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 /**
+ * Socket config
+ */
+const io = require("socket.io")(server);
+io.on("connection", app.onSocketConnection);
+
+/**
  * Normalize a port into a number, string, or false.
  */
 
