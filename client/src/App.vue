@@ -1,28 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ConnectionIndicator v-bind:isConnected="isConnected" />
+    <Gauge v-bind:value="socketMessage" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Gauge from "./components/Gauge";
+import ConnectionIndicator from "./components/ConnectionIndicator.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Gauge,
+    ConnectionIndicator
+  },
+  data() {
+    return {
+      isConnected: false,
+      socketMessage: 0
+    }
+  },
+  sockets: {
+    connect() {
+      this.isConnected = true;
+    },
+    disconnect() {
+      this.isConnected = false;
+    },
+    measureChannel(data) {
+      this.socketMessage = data
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f2fff7;
 }
 </style>
