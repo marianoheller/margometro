@@ -1,0 +1,16 @@
+{
+  "short_name": "Rageboard",
+  "name": "Rageboard",
+  "background_color": "#f2fff7",
+  "theme_color": "#a8ffc9",
+  "display": "standalone",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html?launcher=true"
+}
