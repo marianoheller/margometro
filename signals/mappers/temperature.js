@@ -7,7 +7,7 @@ const temperature = temp => {
     .scalePow()
     .exponent(Math.sqrt(2))
     .domain([K + 0, K + 10, K + 20, K + 30, K + 40])
-    .range([100, 40, 0, 80, 100])
+    .range([100, 40, 50, 70, 100])
     .clamp(true);
   return scale(temp);
 };

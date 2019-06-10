@@ -71,7 +71,7 @@ export const createChart = domName => {
   label.y = am4core.percent(100);
   label.horizontalCenter = "middle";
   label.verticalCenter = "bottom";
-  label.text = "50%";
+  label.text = "0%";
 
   /**
    * Hand
@@ -81,7 +81,7 @@ export const createChart = domName => {
   hand.innerRadius = am4core.percent(20);
   hand.startWidth = 10;
   hand.pin.disabled = true;
-  hand.value = 50;
+  hand.value = 0;
 
   hand.events.on("propertychanged", ev => {
     range0.endValue = ev.target.value;

@@ -9,7 +9,7 @@ const dollarPesoRate = rate => {
     .scalePow()
     .exponent(Math.sqrt(2))
     .domain([40, 45, 50])
-    .range([10, 50, 80]);
+    .range([10, 80, 150]);
   return scale(rate);
 };
 
