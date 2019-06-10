@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client", "dist")));
 
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(process.env.MONGODB_URI || "localhost:27017", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false
