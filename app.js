@@ -1,20 +1,58 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+require("dotenv").config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const express = require("express");
+const compression = require("compression");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
-var app = express();
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 
-app.use(logger('dev'));
+const app = express();
+
+const isProduction = process.env.NODE_ENV === "production";
+
+app.use(logger("dev"));
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+mongoose
+  .connect(process.env.MONGODB_URI || "localhost:27017", {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  })
+  .then(() => require("./batch")())
+  .catch(console.error);
+if (!isProduction) mongoose.set("debug", true);
+
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+
+require("./models/Signal");
+const { getValue } = require("./signals");
+
+const emitter = socket =>
+  getValue().then(val => {
+    socket.emit("measure", val);
+  });
+
+app.onSocketConnection = socket => {
+  console.log("Client connected");
+  socket.on("close", () => console.log("Client disconnected"));
+  emitter(socket)
+    .then(() => {
+      setInterval(
+        () => emitter(socket),
+        process.env.INTERVAL_BROADCAST_MS || 1000
+      );
+    })
+    .catch(console.error);
+};
 
 module.exports = app;

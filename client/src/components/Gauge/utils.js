@@ -1,6 +1,6 @@
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import themeAnimated from "@amcharts/amcharts4/themes/animated";
+import themeAnimated from "@amcharts/amcharts4/themes/material";
 
 am4core.useTheme(themeAnimated);
 
@@ -8,7 +8,7 @@ export const capValue = (min, max) => value => {
   if (value < min) return min;
   if (value > max) return max;
   return value;
-}
+};
 
 export const createChart = domName => {
   // create chart
@@ -71,7 +71,7 @@ export const createChart = domName => {
   label.y = am4core.percent(100);
   label.horizontalCenter = "middle";
   label.verticalCenter = "bottom";
-  label.text = "50%";
+  label.text = "0%";
 
   /**
    * Hand
@@ -81,7 +81,7 @@ export const createChart = domName => {
   hand.innerRadius = am4core.percent(20);
   hand.startWidth = 10;
   hand.pin.disabled = true;
-  hand.value = 50;
+  hand.value = 0;
 
   hand.events.on("propertychanged", ev => {
     range0.endValue = ev.target.value;

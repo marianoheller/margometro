@@ -20,7 +20,7 @@ export default {
     value() {
       const { label, hand } = handler;
       const value = capValue(0, 100)(this.value);
-      label.text = value + "%";
+      label.text = value.toFixed(2) + "%";
       new am4core.Animation(
         hand,
         {

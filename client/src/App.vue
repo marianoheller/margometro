@@ -19,7 +19,7 @@ export default {
     return {
       isConnected: false,
       socketMessage: 0
-    }
+    };
   },
   sockets: {
     connect() {
@@ -28,8 +28,8 @@ export default {
     disconnect() {
       this.isConnected = false;
     },
-    measureChannel(data) {
-      this.socketMessage = data
+    measure(data) {
+      this.socketMessage = data;
     }
   }
 };
@@ -42,7 +42,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f2fff7;
 }
 </style>
