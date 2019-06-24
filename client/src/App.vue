@@ -1,46 +1,16 @@
 <template>
   <div id="app">
-    <ConnectionIndicator v-bind:isConnected="isConnected" />
-    <Gauge v-bind:value="socketMessage" />
+    <dashboard-view />
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-import Gauge from "./components/Gauge";
-import ConnectionIndicator from "./components/ConnectionIndicator.vue";
-import { MUTATIONS_TYPES as WEATHER_MUTATIONS_TYPES } from './store/modules/weather'
+import dashboard from "./views/dashboard.vue";
 
 export default {
   name: "app",
   components: {
-    'dashboard-layout',
-    ConnectionIndicator
-  },
-  data() {
-    return {
-      isConnected: false,
-      socketMessage: 0
-    };
-  },
-  methods: {
-    ...mapMutations([
-      WEATHER_MUTATIONS_TYPES.SET_TEMPERATURE
-    ]),
-  },
-  sockets: {
-    connect() {
-      this.isConnected = true;
-    },
-    disconnect() {
-      this.isConnected = false;
-    },
-    weather(data) {
-      return data;
-    },
-    measure(data) {
-      this.socketMessage = data;
-    }
+    "dashboard-view": dashboard
   }
 };
 </script>

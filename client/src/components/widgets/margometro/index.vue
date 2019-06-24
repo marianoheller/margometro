@@ -1,15 +1,21 @@
 <template>
-  <div id="gauge" />
+  <widget-layout>
+    <div id="gauge" />
+  </widget-layout>
 </template>
 
 <script>
 import * as am4core from "@amcharts/amcharts4/core";
+import WidgetLayout from "../../layout/widget.vue";
 import { createChart, capValue } from "./utils";
 
 let handler;
 
 export default {
   name: "Gauge",
+  components: {
+    "widget-layout": WidgetLayout
+  },
   props: {
     value: { type: Number, default: 0 }
   },

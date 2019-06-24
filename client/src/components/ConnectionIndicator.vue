@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="connection-indicator-container">
     <div id="indicator" v-bind:style="style" />
   </div>
 </template>
@@ -12,14 +12,14 @@ export default {
   },
   computed: {
     style() {
-      return `background-color: ${this.isConnected ? '#25ff8b': '#ff3e25'}`;
-    },
-  },
+      return `background-color: ${this.isConnected ? "#25ff8b" : "#ff3e25"}`;
+    }
+  }
 };
 </script>
 
 <style>
-#container {
+#connection-indicator-container {
   position: fixed;
   top: 1rem;
   right: 1rem;
@@ -30,6 +30,6 @@ export default {
   border-radius: 50%;
   width: 0.75rem;
   height: 0.75rem;
-  box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
 }
 </style>

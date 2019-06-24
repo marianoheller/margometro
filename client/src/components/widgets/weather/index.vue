@@ -1,26 +1,29 @@
 <template>
-  <div id="container">
-    <div id="temp" v-bind:style="style" />
-  </div>
+  <widget-layout>
+    <div class="temp-container">
+      13 °C
+    </div>
+    <div class="humidity-container">
+      75 %
+    </div>
+  </widget-layout>
 </template>
 
 <script>
+import WidgetLayout from "../../layout/widget.vue";
 export default {
-  name: "ConnectionIndicator",
-  props: {
-    isConnected: { type: Boolean, default: false }
-  },
-  computed: {
-    style() {
-      return `background-color: ${this.isConnected ? "#25ff8b" : "#ff3e25"}`;
-    }
+  name: "weather-widget",
+  components: {
+    "widget-layout": WidgetLayout
   }
 };
 </script>
 
 <style>
-#container {
-  display: flex;
-  flex-direction: column;
+.temp-container {
+  font-size: 2rem;
+}
+.humidity-container {
+  font-size: 1.25rem;
 }
 </style>
