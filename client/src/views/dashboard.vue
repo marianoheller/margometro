@@ -14,7 +14,7 @@ import { mapMutations } from "vuex";
 import DashboardLayout from "../components/layout/dashboard.vue";
 import WeatherWidget from "../components/widgets/weather";
 import MargometroWidget from "../components/widgets/margometro";
-import ConnectionIndicator from "../components/ConnectionIndicator.vue";
+import ConnectionIndicator from "../components/connectionIndicator";
 import { MUTATIONS_TYPES as WEATHER_MUTATIONS_TYPES } from "../store/modules/weather";
 
 export default {
@@ -59,6 +59,5 @@ export default {
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
-  background-color: #f2fff7;
 }
 </style>

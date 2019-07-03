@@ -1,28 +1,18 @@
 <template>
-  <div id="app">
+  <main-layout>
     <dashboard-view />
-  </div>
+  </main-layout>
 </template>
 
 <script>
-import dashboard from "./views/dashboard.vue";
+import main from "./components/layout/main";
+import dashboard from "./views/dashboard";
 
 export default {
   name: "app",
   components: {
+    "main-layout": main,
     "dashboard-view": dashboard
   }
 };
 </script>
-
-<style>
-#app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-family: "Roboto", sans-serif;
-  background-color: #f2fff7;
-}
-</style>

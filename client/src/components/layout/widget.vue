@@ -19,7 +19,6 @@ export default {
 
   border: 1px solid black;
   background-color: rgba(1, 1, 1, 0.1);
-  color: black;
   /* grid-column-start
   grid-column-end
   grid-row-start
