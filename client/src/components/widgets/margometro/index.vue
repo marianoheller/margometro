@@ -1,13 +1,22 @@
 <template>
   <widget-layout>
-    <div id="gauge" />
+    <div class="gauge" />
   </widget-layout>
 </template>
 
 <script>
 import * as am4core from "@amcharts/amcharts4/core";
-import WidgetLayout from "../../layout/widget.vue";
+import reduce from 'lodash/reduce';
+import store from "@/store";
+import WidgetLayout from "@/components/layout/widget.vue";
 import { createChart, capValue } from "./utils";
+
+const themeGettersMapper = keys => (
+  reduce(keys, (acc, k) => ({
+    ...acc,
+    [k]: store.getters[`theme/${k}`]
+  }), {})
+);
 
 let handler;
 
@@ -19,8 +28,10 @@ export default {
   props: {
     value: { type: Number, default: 0 }
   },
-  mounted: () => {
-    handler = createChart("gauge");
+  mounted() {
+    handler = createChart("gauge", themeGettersMapper([
+      'fontPrimary'
+    ]));
   },
   watch: {
     value() {
@@ -42,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-#gauge {
+.gauge {
   width: 100%;
   height: 100%;
   max-height: 20rem;

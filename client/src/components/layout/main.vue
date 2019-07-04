@@ -20,7 +20,7 @@ const MainLayout = styled.div`
   width: 100%;
   height: 100%;
   font-family: "Roboto", sans-serif;
-  color: ${() => store.getters["theme/font"]};
+  color: ${() => store.getters["theme/fontPrimary"]};
   background-color: ${() => store.getters["theme/primary"]};
 `;
 

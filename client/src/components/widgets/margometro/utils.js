@@ -10,7 +10,7 @@ export const capValue = (min, max) => value => {
   return value;
 };
 
-export const createChart = domName => {
+export const createChart = (domName, themeData) => {
   // create chart
   let chart = am4core.create(domName, am4charts.GaugeChart);
   chart.innerRadius = am4core.percent(82);
@@ -67,6 +67,7 @@ export const createChart = domName => {
   let label = chart.radarContainer.createChild(am4core.Label);
   label.isMeasured = false;
   label.fontSize = 20;
+  label.fill = themeData.fontPrimary;
   label.x = am4core.percent(50);
   label.y = am4core.percent(100);
   label.horizontalCenter = "middle";

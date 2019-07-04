@@ -44,7 +44,8 @@ const mutations = {
 const getters = {
   primary: state => state.primary[100],
   secondary: state => state.secondary[100],
-  font: state => state.secondary[90],
+  fontPrimary: state => state.secondary[90],
+  fontSecondary: state => state.secondary[90],
   shadow: state => state.shadow[10]
 };
 

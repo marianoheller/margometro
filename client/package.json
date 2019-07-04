@@ -21,6 +21,7 @@
     "socket.io-client": "^2.2.0",
     "vue": "^2.6.10",
     "vue-color": "^2.7.0",
+    "vue-grid-layout": "^2.3.4",
     "vue-socket.io": "^3.0.7",
     "vue-styled-components": "^1.4.5",
     "vue-template-compiler": "^2.6.10",

@@ -1,32 +1,28 @@
 <template>
-  <div class="widget-layout">
+  <widget-container>
     <slot></slot>
-  </div>
+  </widget-container>
 </template>
 
 <script>
-export default {
-  name: "widget-layout"
-};
-</script>
+import Vue from 'vue';
+import styled from 'vue-styled-components';
+import store from "@/store";
 
-<style>
-.widget-layout {
-  display: flex;
+const WidgetContainer = styled.div`
+  /* display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
-  border: 1px solid black;
-  background-color: rgba(1, 1, 1, 0.1);
-  /* grid-column-start
-  grid-column-end
-  grid-row-start
-  grid-row-end */
-}
+  border: 1px solid ${() => store.getters["theme/shadow"]}; */
+  background-color: red;
+`;
 
-.widget-layout:hover {
-  filter: grayscale(0.5) drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
-}
-</style>
+export default {
+  name: "widget-layout",
+  components: {
+    // WidgetContainer: Vue.component('widget-container', WidgetContainer),
+    'widget-container': WidgetContainer,
+  },
+};
