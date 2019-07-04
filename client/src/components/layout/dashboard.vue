@@ -19,9 +19,9 @@
         :h="item.h"
         :i="item.i"
       >
-        <WidgetLayout>
+        <widget-container id="lalala">
           {{ item.i }}
-        </WidgetLayout>
+        </widget-container>
       </grid-item>
     </grid-layout>
   </DashboardContainer>
@@ -30,7 +30,7 @@
 <script>
 import styled from "vue-styled-components";
 import VueGridLayout from "vue-grid-layout";
-import WidgetLayout from "./widget";
+import store from "@/store";
 
 const COL_NUM = 3;
 const testLayout = Array(6)
@@ -48,13 +48,24 @@ const DashboardContainer = styled.div`
   height: 100%;
 `;
 
+const WidgetWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  border: 1px solid ${() => store.getters["theme/shadow"]};
+  background-color: ${() => store.getters["theme/primary"]};
+`;
+
 export default {
   name: "dashboard-layout",
   components: {
     GridLayout: VueGridLayout.GridLayout,
     GridItem: VueGridLayout.GridItem,
     DashboardContainer,
-    WidgetLayout
+    "widget-container": WidgetWrapper
   },
   data() {
     return {

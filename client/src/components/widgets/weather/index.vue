@@ -1,21 +1,17 @@
 <template>
-  <widget-layout>
+  <div>
     <div class="temp-container">
       13 °C
     </div>
     <div class="humidity-container">
       75 %
     </div>
-  </widget-layout>
+  </div>
 </template>
 
 <script>
-import WidgetLayout from "../../layout/widget.vue";
 export default {
-  name: "weather-widget",
-  components: {
-    "widget-layout": WidgetLayout
-  }
+  name: "weather-widget"
 };
 </script>
 

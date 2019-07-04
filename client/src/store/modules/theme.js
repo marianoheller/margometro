@@ -46,7 +46,7 @@ const getters = {
   secondary: state => state.secondary[100],
   fontPrimary: state => state.secondary[90],
   fontSecondary: state => state.secondary[90],
-  shadow: state => state.shadow[10]
+  shadow: state => state.secondary[10]
 };
 
 export default {
