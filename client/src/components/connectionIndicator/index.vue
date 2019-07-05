@@ -4,16 +4,16 @@
 
 <script>
 import styled from "vue-styled-components";
+import store from "@/store";
 
 const Indicator = styled.div`
   border-radius: 50%;
   width: 0.75rem;
   height: 0.75rem;
-  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
 `;
 
 export default {
-  name: "ConnectionIndicator",
+  name: "connection-indicator",
   components: {
     Indicator
   },
@@ -22,7 +22,9 @@ export default {
   },
   computed: {
     style() {
-      return `background-color: ${this.isConnected ? "#25ff8b" : "#ff3e25"}`;
+      return `background-color: ${
+        this.isConnected ? "#25ff8bBF" : "#ff3e25BF"
+      }`;
     }
   }
 };

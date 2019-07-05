@@ -1,10 +1,8 @@
 <template>
   <div id="dashboard-view">
-    <ConnectionIndicator v-bind:isConnected="isConnected" />
     <dashboard-layout>
       <WeatherWidget v-bind:value="socketMessage" />
       <WeatherWidget v-bind:value="socketMessage" />
-      <MargometroWidget v-bind:value="socketMessage" />
     </dashboard-layout>
   </div>
 </template>
@@ -34,6 +32,7 @@ export default {
   methods: {
     ...mapMutations([WEATHER_MUTATIONS_TYPES.SET_TEMPERATURE])
   },
+  // TODO: esto quedó raro (no abria q hacerlo con mutations???)
   sockets: {
     connect() {
       this.isConnected = true;
