@@ -1,7 +1,7 @@
 <template>
   <Container>
     <ElemWrapper>
-      <theme-picker />
+      <!-- <theme-picker /> -->
     </ElemWrapper>
     <ElemWrapper>
       <connection-indicator v-bind:isConnected="isConnected" />

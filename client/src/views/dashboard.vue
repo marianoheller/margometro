@@ -1,9 +1,6 @@
 <template>
   <div id="dashboard-view">
-    <dashboard-layout>
-      <WeatherWidget v-bind:value="socketMessage" />
-      <WeatherWidget v-bind:value="socketMessage" />
-    </dashboard-layout>
+    <dashboard-layout :widgets="widgets" />
   </div>
 </template>
 
@@ -15,18 +12,25 @@ import MargometroWidget from "../components/widgets/margometro";
 import ConnectionIndicator from "../components/connectionIndicator";
 import { MUTATIONS_TYPES as WEATHER_MUTATIONS_TYPES } from "../store/modules/weather";
 
+const widgets = [
+  WeatherWidget,
+  WeatherWidget,
+  MargometroWidget,
+  WeatherWidget,
+  WeatherWidget
+];
+
 export default {
   name: "dashboard-view",
   components: {
     "dashboard-layout": DashboardLayout,
-    ConnectionIndicator,
-    WeatherWidget,
-    MargometroWidget
+    ConnectionIndicator
   },
   data() {
     return {
       isConnected: false,
-      socketMessage: 0
+      socketMessage: 0,
+      widgets
     };
   },
   methods: {

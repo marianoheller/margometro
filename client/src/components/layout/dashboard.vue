@@ -1,7 +1,7 @@
 <template>
   <DashboardContainer>
     <grid-layout
-      :layout.sync="layout"
+      :layout.sync="items"
       :col-num="colNum"
       :is-draggable="true"
       :is-resizable="true"
@@ -11,7 +11,7 @@
       :use-css-transforms="true"
     >
       <grid-item
-        v-for="item in layout"
+        v-for="item in items"
         :key="item.i"
         :x="item.x"
         :y="item.y"
@@ -19,8 +19,9 @@
         :h="item.h"
         :i="item.i"
       >
-        <widget-container id="lalala">
-          {{ item.i }}
+        <widget-container>
+          <!-- <component :is="item.c"></component> -->
+          {{ item.c }}
         </widget-container>
       </grid-item>
     </grid-layout>
@@ -28,20 +29,12 @@
 </template>
 
 <script>
+import map from "lodash/map";
 import styled from "vue-styled-components";
 import VueGridLayout from "vue-grid-layout";
 import store from "@/store";
 
 const COL_NUM = 3;
-const testLayout = Array(6)
-  .fill(0)
-  .map((_, i) => ({
-    i: i,
-    x: i % COL_NUM,
-    y: Math.floor(i / COL_NUM),
-    w: 1,
-    h: 1
-  }));
 
 const DashboardContainer = styled.div`
   width: 100%;
@@ -67,11 +60,28 @@ export default {
     DashboardContainer,
     "widget-container": WidgetWrapper
   },
+  props: {
+    widgets: { type: Array, default: () => [] }
+  },
   data() {
     return {
-      layout: testLayout,
       colNum: COL_NUM
     };
+  },
+  computed: {
+    items() {
+      const { widgets } = this;
+      const ret = map(widgets, (w, i) => ({
+        c: w,
+        i: `${w.name}${i}`,
+        x: i % COL_NUM,
+        y: Math.floor(i / COL_NUM),
+        w: 1,
+        h: 1
+      }));
+      console.warn("GOT", ret);
+      return ret;
+    }
   }
 };
 </script>
